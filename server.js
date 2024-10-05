@@ -8,29 +8,34 @@
  *************************/
 const express = require("express");
 const expressLayouts = require("express-ejs-layouts");
-const dotenv = require("dotenv").config();
+const env = require("dotenv").config();
 const app = express();
-const staticRoutes = require("./routes/static");
+const static = require("./routes/static");
 
 /* ***********************
  * Middleware Setup
  *************************/
-app.set("view engine", "ejs");  // Set EJS as the templating engine
-app.use(expressLayouts);         // Use EJS layouts
-app.set("layout", "./layouts/layout"); // Set the layout file
-app.use(staticRoutes);           // Use static routes
+app.set("view engine", "ejs");  
+app.use(expressLayouts);         
+app.set("layout", "./layouts/layout"); // not at views root
+         
 
-// Index route
-app.get("/", (req, res) => {
-  res.render("index", { title: "Home" }); // Render index page with title
+/* ***********************
+ * Routes
+ *************************/
+app.use("/", static);
+
+// Index Route
+app.get("/", (_, res) => {
+  res.render("index", { title: "Home" });
 });
 
 /* ***********************
  * Local Server Information
  * Values from .env (environment) file
  *************************/
-const port = process.env.PORT || 3000; // Default to port 3000 if not specified
-const host = process.env.HOST || "localhost"; // Default host
+const port = process.env.PORT || 3000; 
+const host = process.env.HOST || "localhost"; 
 
 /* ***********************
  * Log statement to confirm server operation
