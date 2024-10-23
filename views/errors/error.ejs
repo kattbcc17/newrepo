@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %> - Error</title>
+    <link rel="stylesheet" href="/public/css/styles.css"> 
+</head>
+<body>
+    <% if (title) { %>
+        <h1><%= title %></h1>
+    <% } else { %>
+        <h1>Oops!</h1>
+    <% } %>
+
+    <div class="error-message">
+        <!-- Display the error message passed through the render function -->
+        <h2>Uh-oh! Something went wrong.</h2>
+        <p><%= message %></p>
+        <p>But don't worry, it happens to the best of us!</p>
+        
+        <!-- Optionally, add a funny image or graphic -->
+        <img src="/path/to/funny-image.jpg" alt="Funny error image" style="max-width: 400px;">
+
+        <!-- A humorous suggestion -->
+        <p>Try <a href="/">going back home</a> and see if you can find what you're looking for!</p>
+    </div>
+</body>
+</html>
