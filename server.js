@@ -32,7 +32,7 @@ app.get("/", baseController.buildHome)
 
 // Inventory routes
 app.use("/inv", inventoryRoute)
-app.use(async (req, res, next) => {
+app.use(async (_, _, next) => {
   next({status: 404, message: 'Page not found'})
 })
 
