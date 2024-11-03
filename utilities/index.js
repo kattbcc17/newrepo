@@ -54,10 +54,39 @@ Util.buildClassificationGrid = async function(data){
     })
     grid += '</ul>'
   } else { 
-    grid += '<p class="notice">Sorry, no matching vehicles could be found.</p>'
+    grid += '<p class="notice">Sorry, no matching vehicles could be found at the moment.</p>'
   }
   return grid
 }
+
+/* **************************************
+ * Build HTML for a specific vehicle detail view
+ *************************************** */
+Util.buildVehicleDetailGrid = async function(data) {
+  const vehicle = data[0]; 
+
+  const formattedPrice = new Intl.NumberFormat('en-US').format(vehicle.inv_price);
+  const formattedMiles = new Intl.NumberFormat('en-US').format(vehicle.inv_miles);
+
+  return `
+    <div id="inv-detail" class="vehicle-detail">
+      <h1>${vehicle.inv_make} ${vehicle.inv_model}</h1>
+      <img src="${vehicle.inv_image}" 
+           alt="Image of ${vehicle.inv_make} ${vehicle.inv_model} on CSE Motors" 
+           class="vehicle-image" />
+
+      <div class="vehicle-info">
+        <ul>
+          <li><strong>Price:</strong> $${formattedPrice}</li>
+          <li><strong>Year:</strong> ${vehicle.inv_year}</li>
+          <li><strong>Color:</strong> ${vehicle.inv_color}</li>
+          <li><strong>Mileage:</strong> ${formattedMiles} miles</li>
+        </ul>
+        <p><strong>Description:</strong> ${vehicle.inv_description}</p>
+      </div>
+    </div>
+  `;
+};
 
 /* ****************************************
  * Middleware For Handling Errors
