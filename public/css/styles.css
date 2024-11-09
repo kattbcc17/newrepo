@@ -1,257 +1,200 @@
-/******* Global Styles and Fonts ***************/
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;0,1000&family=Lexend:wght@100;200;300;400;500;600;700;800;900&family=Manrope:wght@200;300;400;500;600;700;800&family=Nanum+Gothic:wght@400;700;800&family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap');
-
-* {
+/******* Change Box Model ***************/
+*,
+*::before,
+*::after {
   box-sizing: border-box;
-  text-decoration: none;
+}
+
+body {
+  font-family: 'Open Sans', serif;
+  font-size: 16px;
   margin: 0;
   padding: 0;
-  font-family: 'Manrope', sans-serif;
+  background-color: #f4f4f9; /* Soft, light background */
 }
 
-a {
-  color: rgb(248, 245, 245);
-}
-
-/******* Header Section ***************/
-header {
-  display: flex;
-  background-color: rgb(0, 0, 0);
-  align-items: center;
-  justify-content: space-between;
-  width: 100%;
-  padding: 20px;
-  position: absolute;
-  z-index: 1;
-}
-
-.siteName a {
-  font-size: 15px;
-  color: white;
-}
-
-.account-icon,
-.toggle {
-  font-size: 30px;
-  color: white;
+main {
+  background-color: #ffffff;
+  margin: 0 auto;
+  max-width: 1200px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Light shadow for depth */
 }
 
 nav {
-  display: none;
-}
-
-nav .menu {
-  width: 100%;
-  background: rgba(0, 0, 0, 0.895);
-  backdrop-filter: blur(10px);
-  position: absolute;
-  top: 64px;
-  right: 0;
-}
-
-nav ul li {
-  color: white;
-  display: block;
-  list-style: none;
-  padding: 20px 0;
+  background-color: #000000;
+  color: #ffffff;
+  padding: 10px 0;
   text-align: center;
 }
 
-.userLogged {
-  color: white;
-  font-size: 20px;
-}
-
-/******* Hero Section ***************/
-.hero-container {
-  position: relative;
+nav ul {
   display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  padding-top: 70px;
-  height: 550px;
-  background: url("../images/site/audi.jpg") center / cover no-repeat;
+  justify-content: space-around;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  gap: 20px;
 }
 
-.overlay {
-  background: linear-gradient(0deg, rgba(134, 212, 255, 0) 0%, rgba(0, 0, 0, 0.9) 100%);
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
+nav a {
+  color: #ffffff;
+  font-weight: 600;
+  text-decoration: none;
 }
 
-.content {
-  margin-top: 2rem;
-  position: relative;
-  color: white;
-  text-align: center;
+ul {
+  padding: 0 20px;
 }
 
-.hero-button {
-  background-color: rgba(0, 0, 0, 0.55);
-  height: 50px;
-  width: 50%;
-  margin: 20px auto 5rem;
-  padding: 8px 20px;
-  color: white;
-  font-size: 15px;
-  border: 1px solid white;
-  border-radius: 10px;
+li {
+  padding: 0 15px;
 }
 
-.hero-button:hover {
-  background-color: #c03333;
+a {
+  color: #000508;
+  text-decoration: none;
 }
 
-/******* Upgrades Section ***************/
+.siteName {
+  font-size: 2em;
+  font-weight: 700;
+  color: #000000;
+  margin: 20px 0;
+}
+
+.reviews {
+  padding: 20px 0;
+  background-color: #e3f2fd; /* Light blue */
+}
+
 .upgrades {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-  gap: 20px;
-  justify-items: center;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
   padding: 20px;
+  background-color: #fafafa;
 }
 
-.upgrades ul {
-  display: contents;
+.upgrades h2 {
+  grid-column: span 2;
+  color: #000000;
 }
 
 .upgrades li {
   display: flex;
   flex-direction: column;
-  align-items: center;
   text-align: center;
+  padding: 10px 5px;
+  background-color: #ffffff;
+  border-radius: 4px;
 }
 
 .upgrades img {
+  height: auto;
   width: 100%;
-  max-width: 100px;
-  margin-bottom: 10px;
-  border: 1px solid #ddd;
-  border-radius: 5px;
+  background-color: #050505;
+  padding: 10px;
+  border-radius: 4px;
 }
 
-@media only screen and (max-width: 600px) {
-  .upgrades {
-    grid-template-columns: 1fr;
-  }
-}
-
-/******* Vehicle Display Section ***************/
-#vehicle-display {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-  align-items: center;
-  justify-content: center;
+#wrapper {
+  background-color: #ffffff;
   padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
-.vehicle-info {
-  flex: 1 1 200px;
-  min-width: 200px;
-  max-width: 300px;
+#top-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #ffffff;
+  padding: 15px 0;
+  text-align: center;
+  color: #000000;
+  font-family: 'Lucida Sans', sans-serif;
 }
 
-#vehicle-display picture,
-#vehicle-display img {
-  flex: 1 1 200px;
-  max-width: 400px;
-  width: 100%;
+#vehicle-display section {
+  position: relative;
+  color: #020202;
+  background-color: rgba(255, 255, 255, 0.9);
+  padding: 20px;
+  font-size: 0.9em;
+  max-width: 35%;
   border-radius: 8px;
 }
 
-/******* Specifications Section ***************/
-.specifications-section {
-  padding: 20px 30px;
-  text-align: center;
+#vehicle-display section h3 {
+  font-size: 1.5em;
+  font-weight: 700;
+  color: #030404;
+  margin: 0 0 10px;
 }
 
-.specifications-section h2 {
-  font-size: 25px;
-  margin-bottom: 1rem;
-  color: #c03333;
+#vehicle-display ul {
+  list-style: none;
+  padding: 0;
 }
 
-img {
+#vehicle-display li {
+  padding: 5px 0;
+}
+
+#vehicle-display section a {
+  background-color: #020202;
+  color: #ffffff;
+  font-family: Arial, sans-serif;
+  font-weight: 700;
+  padding: 10px 15px;
+  border-radius: 4px;
+  text-decoration: none;
+  display: inline-block;
+}
+
+#vehicle-display picture {
+  position: relative;
+  top: -100px;
+}
+
+#vehicle-display img {
   width: 100%;
+  border-radius: 4px;
 }
 
-/******* Footer ***************/
-footer {
-  background-color: black;
-  color: white;
-  text-align: center;
-  padding: 20px 10px;
-}
+@media screen and (min-width: 620px) {
+  #wrapper {
+    margin: 20px auto;
+    max-width: 900px; /* Slightly wider for better readability */
+    padding: 25px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+  }
 
-footer a {
-  color: white;
-  text-decoration: underline;
-  display: block;
-  margin-top: 10px;
-}
+  #vehicle-display {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+  }
 
-/******* Login Section ***************/
-#form-container {
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-}
+  #vehicle-display section {
+    font-size: 1em; /* Increase font size for better readability */
+    margin: 0 0 0 80px;
+    max-width: 40%; /* Wider to balance layout with the image */
+  }
 
-#login-form,
-#password-form {
-  width: 100%;
-  padding: 30px;
-  display: flex;
-  flex-direction: column;
-  background-color: white;
-}
+  #vehicle-display picture {
+    top: -80px;
+  }
 
-#login-form label,
-#login-form input,
-#password-form label,
-#password-form input {
-  display: block;
-  width: 100%;
-}
+  #vehicle-display img {
+    max-width: 75%;
+    border-radius: 6px;
+  }
 
-#login-form input,
-#password-form input {
-  font-size: 15px;
-  margin-bottom: 10px;
-  padding: 10px 20px;
-  background-color: #eeeeee;
-  border: 1px solid #d4d4d4;
-}
-
-#login-form button,
-#password-form button {
-  width: 100%;
-  margin-top: 20px;
-  font-size: 18px;
-  font-weight: 500;
-  padding: 10px 0;
-  background-color: #c03333;
-  color: white;
-  border: none;
-}
-
-#login-form button:hover,
-#password-form button:hover {
-  background-color: white;
-  color: #c03333;
-  border: 1px solid #c03333;
-}
-
-
-.login-mainHeading {
-  padding-top: 50px;
-  font-size: 3rem;
-  text-align: center;
-  margin-bottom: 50px;
-  font-weight: 800;
-  text-shadow: 2px 0px 7px #fff;
+  #vehicle-details {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    gap: 30px;
+  }
 }

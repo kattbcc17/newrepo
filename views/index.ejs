@@ -1,57 +1,88 @@
-<section class="hero-container">
-  <div class="overlay"></div>
-  <div class="content">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CSE Motors - DMC DeLorean</title>
+</head>
+<body>
+
+  <header>
     <h1>Welcome to CSE Motors!</h1>
-  </div>
-  <button class="hero-button">Own Today</button>
-  
-  <div class="side-by-side">
-    <h3>DMC DeLorean</h3>
-    <ul>
-      <li>3 Cup holders</li>
-      <li>Superman doors</li>
-      <li>Fuzzy dice</li>
-    </ul>
-    <span>
-      <a href="/" title="Action Button">Own Today</a>
-    </span>
-    
-    <picture>
-      <source srcset="/images/vehicles/delorean.jpg" type="image/jpg">
-      <img src="/images/vehicles/delorean.jpg" alt="Delorean">
-    </picture>
-  </div>
-</section>
+  </header>
 
-<section class="reviews">
-  <h2>DMC DeLorean Reviews</h2>
-  <ul>
-    <li>"So fast it's almost like traveling in time." <span>(4/5)</span></li>
-    <li>"Coolest ride on the road" <span>(4/5)</span></li>
-    <li>"I'm feeling McFly!" <span>(5/5)</span></li>
-    <li>"The most futuristic ride of our day." <span>(4.5/5)</span></li>
-    <li>"80's livin and I love it!" <span>(5/5)</span></li>
-  </ul>
-</section>
+  <!-- Messages placeholder for server-side content -->
+  <section id="messages">
+    <%- messages() %>
+  </section>
 
-<section class="upgrades">
-  <h2>Delorean Upgrades</h2>
-  <ul>
-    <li>
-      <img src="/images/upgrades/flux-cap.png" alt="Flux Capacitor upgrade" loading="lazy">
-      <span>Flux Capacitor</span>
-    </li>
-    <li>
-      <img src="/images/upgrades/flame.jpg" alt="Flame Decals upgrade" loading="lazy">
-      <span>Flame Decals</span>
-    </li>
-    <li>
-      <img src="/images/upgrades/bumper_sticker.jpg" alt="Bumper Stickers upgrade" loading="lazy">
-      <span>Bumper Stickers</span>
-    </li>
-    <li>
-      <img src="/images/upgrades/hub-cap.jpg" alt="Hub Caps upgrade" loading="lazy">
-      <span>Hub Caps</span>
-    </li>
-  </ul>
-</section>
+  <!-- Vehicle Showcase -->
+  <main id="vehicle-display">
+    <article aria-labelledby="vehicle-title">
+      <header>
+        <h2 id="vehicle-title">DMC DeLorean</h2>
+      </header>
+      <ul aria-label="Vehicle Features">
+        <li>Cup Holders</li>
+        <li>Superman Doors</li>
+        <li>Fuzzy Dice</li>
+      </ul>
+      <div class="action">
+        <a href="/" class="button" title="Buy the DMC DeLorean">Own Today</a>
+      </div>
+    </article>
+
+    <!-- Vehicle Image -->
+    <figure>
+      <picture>
+        <source srcset="/images/vehicles/delorean.jpg" type="image/jpg">
+        <img src="/images/vehicles/delorean.jpg" alt="DMC DeLorean with iconic doors and retro styling">
+      </picture>
+      <figcaption>Experience the DMC DeLorean – the iconic 80's time-traveling car.</figcaption>
+    </figure>
+  </main>
+
+  <!-- Vehicle Details -->
+  <section id="vehicle-details">
+    <!-- Reviews Section -->
+    <article class="reviews" aria-labelledby="reviews-title">
+      <header>
+        <h2 id="reviews-title">DMC DeLorean Reviews</h2>
+      </header>
+      <ul>
+        <li>“So fast it’s almost like traveling in time.” <strong>(4/5)</strong></li>
+        <li>“Coolest ride on the road.” <strong>(4/5)</strong></li>
+        <li>“I’m feeling McFly!” <strong>(5/5)</strong></li>
+        <li>“The most futuristic ride of our day.” <strong>(4.5/5)</strong></li>
+        <li>“80's livin' and I love it!” <strong>(5/5)</strong></li>
+      </ul>
+    </article>
+
+    <!-- Upgrades Section -->
+    <article class="upgrades" aria-labelledby="upgrades-title">
+      <header>
+        <h2 id="upgrades-title">Delorean Upgrades</h2>
+      </header>
+      <ul>
+        <li>
+          <img src="/images/upgrades/flux-cap.png" alt="Flux Capacitor">
+          <span>Flux Capacitor</span>
+        </li>
+        <li>
+          <img src="/images/upgrades/flame.jpg" alt="Flame Decals">
+          <span>Flame Decals</span>
+        </li>
+        <li>
+          <img src="/images/upgrades/bumper_sticker.jpg" alt="Bumper Stickers">
+          <span>Bumper Stickers</span>
+        </li>
+        <li>
+          <img src="/images/upgrades/hub-cap.jpg" alt="Hub Caps">
+          <span>Hub Caps</span>
+        </li>
+      </ul>
+    </article>
+  </section>
+
+</body>
+</html>
