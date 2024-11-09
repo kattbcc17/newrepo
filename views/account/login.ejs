@@ -1,0 +1,34 @@
+<div class="menuBackground">
+    
+</div>
+<div id="login-background">
+    <h1 class="login-mainHeading"><%= title %></h1>
+
+    <div id="form-container">
+    
+        <form id="login-form" action="/account/login" method="post">
+            <div class="container">
+                <label for="account_email">Username</label>
+                <input id="account_email" type="text" placeholder="Enter Username" name="account_email" required>
+        
+                <label for="account_password">Password</label>
+                <input id="account_password" type="password" placeholder="Enter Password" name="account_password" required>
+                <button type="submit"><b>Login</b></button>
+                <p>No account? <a href="/account/register">Sing-up</a></p>
+                <%-messages() %>
+            </div>
+        </form>
+    </div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+</div>

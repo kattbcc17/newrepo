@@ -1,17 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
-<%- include('../partials/head') %>
-
+<%- include('../partials/head') -%>
 <body>
-  <div id="wrapper">
-    <%- include('../partials/header') %>
-    <%- include('../partials/navigation') %>  
+    <div id="wrapper">
+        <%- include('../partials/header') -%>
+        <main>
+            <%- body -%>
+        </main>
 
-    <main>
-      <%- body %>
-    </main>
+        <%- include('../partials/footer') -%>
+    </div>
+    <script>
+       
 
-    <%- include('../partials/footer') %>
-  </div>
+const nav = document.querySelector('nav')
+const toggle = document.querySelector('.toggle')
+const logo = document.querySelector('.siteName a')
+let isOpen = false
+
+toggle.addEventListener('click', ()=>{
+
+    if(!isOpen){
+        nav.style.display = "block";
+        isOpen = true;
+        logo.style.marginLeft = "-90px"
+    }else{
+        nav.style.display = "none"
+        logo.style.marginLeft = "0px"
+        isOpen = false;
+    }
+
+})
+    </script>
+    <script src="/js/responsiveMenu.js"></script>
+    <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
 </body>
 </html>

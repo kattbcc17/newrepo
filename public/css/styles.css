@@ -1,228 +1,200 @@
 /******* Change Box Model ***************/
 *,
-*:before,
-*:after {
+*::before,
+*::after {
   box-sizing: border-box;
 }
 
 body {
-  font-family: 'Arial', sans-serif;
+  font-family: 'Open Sans', serif;
   font-size: 16px;
   margin: 0;
   padding: 0;
+  background-color: #f4f4f9; /* Soft, light background */
 }
 
 main {
-  background-color: white;
+  background-color: #ffffff;
   margin: 0 auto;
   max-width: 1200px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Light shadow for depth */
 }
 
 nav {
-  background-color: rgb(37, 37, 58);
-  color: #fff;
-  padding: 2px 0;
+  background-color: #000000;
+  color: #ffffff;
+  padding: 10px 0;
   text-align: center;
 }
 
 nav ul {
   display: flex;
-  flex-direction: row;
   justify-content: space-around;
-  list-style-type: none;
+  list-style: none;
   padding: 0;
+  margin: 0;
+  gap: 20px;
 }
 
-nav ul li {
-  display: inline-block;
-  padding: 10px;
-  font-weight: bold;
-  color: white;
+nav a {
+  color: #ffffff;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+ul {
+  padding: 0 20px;
 }
 
 li {
-  padding: 5px 0;
+  padding: 0 15px;
 }
 
 a {
-  padding: 10px 20px;
-  color: #FFFF;
+  color: #000508;
   text-decoration: none;
 }
-
-.reviews, .upgrades {
-  margin: 20px;
-}
-
 
 .siteName {
-  text-decoration: none;
-  color: white;
-  font-size: 24px;
+  font-size: 2em;
   font-weight: 700;
+  color: #000000;
+  margin: 20px 0;
 }
 
-#tools a {
-  text-decoration: none;
-    color: white;
-    font-weight: bold;
-    padding: 10px 15px;
-    background-color: #2f2f44;
-    border-radius: 5px;
+.reviews {
+  padding: 20px 0;
+  background-color: #e3f2fd; /* Light blue */
 }
 
-#tools a:hover {
-  background-color: #00bfff;
-  transition: background-color 0.3s ease;
-}
-
-footer {
-  background-color: #2f2f44;
-  color: rgb(255, 255, 255);
-}
-
-h1 {
-  text-align: left;
-  color: #000;
-}
-
-
-.upgrades * {
+.upgrades {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-gap: 10px;
-  padding: 10px;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  padding: 20px;
+  background-color: #fafafa;
 }
+
 .upgrades h2 {
-  display: block;
+  grid-column: span 2;
+  color: #000000;
 }
-
-@media only screen and (max-width: 600px) {
-  nav ul li {
-      display: block;
-      padding: 10px 0;
-  }
-
-  #vehicle-display {
-      flex-direction: column;
-  }
-
-  #vehicle-display img {
-      width: 100%;
-  }
-
-  .upgrades ul {
-      grid-template-columns: 1fr;
-  }
-} 
-
 
 .upgrades li {
   display: flex;
   flex-direction: column;
   text-align: center;
   padding: 10px 5px;
+  background-color: #ffffff;
+  border-radius: 4px;
 }
 
 .upgrades img {
-  height: 90%;
+  height: auto;
   width: 100%;
-  background-color: rgb(69, 147, 195);
-  border: rgb(69, 147, 195) 1px solid;
-  padding: 0 40px;
-  object-fit: cover;
+  background-color: #050505;
+  padding: 10px;
+  border-radius: 4px;
+}
+
+#wrapper {
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 #top-header {
-  background-color: white;
   display: flex;
-  align-items: center;
-  flex-direction: row;
   justify-content: space-between;
-  padding: 15px;
+  align-items: center;
+  background-color: #ffffff;
+  padding: 15px 0;
   text-align: center;
-  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  color: #000000;
+  font-family: 'Lucida Sans', sans-serif;
 }
 
 #vehicle-display section {
   position: relative;
-  color: rgb(30, 169, 255);
-  background-color: rgba(255, 255, 255, 0.445);
-  padding: 5px;
-  font-size: small;
-  width: 175px;
-  height: 150px;
-  z-index: 1;
+  color: #020202;
+  background-color: rgba(255, 255, 255, 0.9);
+  padding: 20px;
+  font-size: 0.9em;
+  max-width: 35%;
+  border-radius: 8px;
 }
 
 #vehicle-display section h3 {
   font-size: 1.5em;
   font-weight: 700;
-  margin: 0;
+  color: #030404;
+  margin: 0 0 10px;
 }
 
 #vehicle-display ul {
-  list-style-type: none;
+  list-style: none;
   padding: 0;
 }
 
 #vehicle-display li {
-  padding: 0;
+  padding: 5px 0;
 }
 
 #vehicle-display section a {
-  background-color: rgb(30, 169, 255);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: #020202;
+  color: #ffffff;
+  font-family: Arial, sans-serif;
   font-weight: 700;
-  padding: 10px;
+  padding: 10px 15px;
+  border-radius: 4px;
+  text-decoration: none;
+  display: inline-block;
 }
 
 #vehicle-display picture {
-  position: absolute;
-  top: 200px;
+  position: relative;
+  top: -100px;
 }
 
 #vehicle-display img {
   width: 100%;
-  height: auto;
+  border-radius: 4px;
 }
 
-/******* Vehicle Detail View Styling ********/
-#inv-detail {
-  margin: 20px;
-  padding: 20px;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-  background-color: #f9f9f9;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
+@media screen and (min-width: 620px) {
+  #wrapper {
+    margin: 20px auto;
+    max-width: 900px; /* Slightly wider for better readability */
+    padding: 25px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+  }
 
-#inv-detail img {
-  width: 80%;
-  max-width: 400px;
-  margin-bottom: 20px;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-}
+  #vehicle-display {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+  }
 
-#inv-detail ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  width: 100%;
-}
+  #vehicle-display section {
+    font-size: 1em; /* Increase font size for better readability */
+    margin: 0 0 0 80px;
+    max-width: 40%; /* Wider to balance layout with the image */
+  }
 
-#inv-detail li {
-  margin-bottom: 10px;
-  font-size: 1.1em;
-  color: #333;
-}
+  #vehicle-display picture {
+    top: -80px;
+  }
 
-#inv-detail p {
-  font-size: 1.2em;
-  color: #666;
-  text-align: center;
-  line-height: 1.4;
+  #vehicle-display img {
+    max-width: 75%;
+    border-radius: 6px;
+  }
+
+  #vehicle-details {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    gap: 30px;
+  }
 }

@@ -1,5 +1,4 @@
 const invModel = require("../models/inventory-model")
-
 const Util = {}
 
 /* ************************
@@ -7,7 +6,7 @@ const Util = {}
  ************************** */
 Util.getNav = async function (req, res, next) {
   let data = await invModel.getClassifications()
-  let list = "<ul>"
+  let list = `<ul class="menu">`
   list += '<li><a href="/" title="Home page">Home</a></li>'
   data.rows.forEach((row) => {
     list += "<li>"
@@ -25,7 +24,6 @@ Util.getNav = async function (req, res, next) {
   return list
 }
 
-
 /* **************************************
 * Build the classification view HTML
 * ************************************ */
@@ -34,14 +32,13 @@ Util.buildClassificationGrid = async function(data){
   if(data.length > 0){
     grid = '<ul id="inv-display">'
     data.forEach(vehicle => { 
-      grid += '<li>'
+      grid += '<li class="carCard">'
       grid +=  '<a href="../../inv/detail/'+ vehicle.inv_id 
       + '" title="View ' + vehicle.inv_make + ' '+ vehicle.inv_model 
       + 'details"><img src="' + vehicle.inv_thumbnail 
       +'" alt="Image of '+ vehicle.inv_make + ' ' + vehicle.inv_model 
       +' on CSE Motors" /></a>'
       grid += '<div class="namePrice">'
-      grid += '<hr />'
       grid += '<h2>'
       grid += '<a href="../../inv/detail/' + vehicle.inv_id +'" title="View ' 
       + vehicle.inv_make + ' ' + vehicle.inv_model + ' details">' 
@@ -54,39 +51,10 @@ Util.buildClassificationGrid = async function(data){
     })
     grid += '</ul>'
   } else { 
-    grid += '<p class="notice">Sorry, no matching vehicles could be found at the moment.</p>'
+    grid += '<p class="notice">Sorry, no matching vehicles could be found.</p>'
   }
   return grid
 }
-
-/* **************************************
- * Build HTML for a specific vehicle detail view
- *************************************** */
-Util.buildVehicleDetailGrid = async function(data) {
-  const vehicle = data[0]; 
-
-  const formattedPrice = new Intl.NumberFormat('en-US').format(vehicle.inv_price);
-  const formattedMiles = new Intl.NumberFormat('en-US').format(vehicle.inv_miles);
-
-  return `
-    <div id="inv-detail" class="vehicle-detail">
-      <h1>${vehicle.inv_make} ${vehicle.inv_model}</h1>
-      <img src="${vehicle.inv_image}" 
-           alt="Image of ${vehicle.inv_make} ${vehicle.inv_model} on CSE Motors" 
-           class="vehicle-image" />
-
-      <div class="vehicle-info">
-        <ul>
-          <li><strong>Price:</strong> $${formattedPrice}</li>
-          <li><strong>Year:</strong> ${vehicle.inv_year}</li>
-          <li><strong>Color:</strong> ${vehicle.inv_color}</li>
-          <li><strong>Mileage:</strong> ${formattedMiles} miles</li>
-        </ul>
-        <p><strong>Description:</strong> ${vehicle.inv_description}</p>
-      </div>
-    </div>
-  `;
-};
 
 /* ****************************************
  * Middleware For Handling Errors
@@ -94,5 +62,31 @@ Util.buildVehicleDetailGrid = async function(data) {
  * General Error Handling
  **************************************** */
 Util.handleErrors = fn => (req, res, next) => Promise.resolve(fn(req, res, next)).catch(next)
+
+Util.buildCarDisplay  = async function(data) {
+  let display;
+
+  display = '<section class="carBlock">'
+  display += '<div>'
+  display += '<img class="carPicture" src=' + data.inv_image 
+  +' alt="' + data.inv_make + ' ' + data.inv_model 
+  +' on CSE Motors" />'
+  display += '</div>'
+  display += '<div class="CarDetails">'
+  display += '<h3 class="carTitle">' + data.inv_year + '</h3>'
+  let formattedprice =  Number(data.inv_price).toLocaleString("en-US")
+  display += '<p class="price">Price: $' + formattedprice + '</p>'
+  let formattedMiles = data.inv_miles.toLocaleString("en-US")
+  display += '<p class="miles">Miles: ' + formattedMiles  + '</p>'
+  display += '<p class="color">Color: ' + data.inv_color  + '</p>'
+  display += '<p class ="description"> Description: ' + data.inv_description + '</p>'
+  display += '</div>'
+  display += '</section>'
+  
+  return display
+}
+
+
+
 
 module.exports = Util

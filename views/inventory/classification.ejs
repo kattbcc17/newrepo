@@ -1,14 +1,6 @@
 <% if (title) { %>
-    <!-- Content Heading: Display the title as the main heading -->
     <h1><%= title %></h1>
-  <% } else {
-    // Redirect to the home page if no title exists
-    res.redirect('/')
-  } %>
+  <% } %>
   
-  <!-- Message Block: Reserved for future message display functionality -->
-  <%# messages() %>
-  
-  <!-- Inventory Items Display: Renders the inventory items grid -->
   <%- grid %>
   

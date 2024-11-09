@@ -6,7 +6,7 @@ const invCont = {}
 /* ***************************
  *  Build inventory by classification view
  * ************************** */
-invCont.buildByClassificationId = async function (req, res, _) {
+invCont.buildByClassificationId = async function (req, res, next) {
   const classification_id = req.params.classificationId
   const data = await invModel.getInventoryByClassificationId(classification_id)
   const grid = await utilities.buildClassificationGrid(data)
@@ -19,20 +19,18 @@ invCont.buildByClassificationId = async function (req, res, _) {
   })
 }
 
-/* ***************************
- *  Build vehicle detail view by vehicle ID
- * ************************** */
-invCont.buildVehicleDetailView = async function (req, res, _) {
-  const inv_id = req.params.invId;
-  const data = await invModel.getVehicleById(inv_id);
-  const grid = await utilities.buildVehicleDetailGrid(data)
-  let nav = await utilities.getNav();
-  res.render("./inventory/detail", {
-    title: data[0].inv_make + " " + data[0].inv_model,
+invCont.buildByInvId = async function(req, res, next) {
+  const inv_id = req.params.inv_id
+  const data = await invModel.getCarByInvId(inv_id)
+  let nav = await utilities.getNav()
+  const carData = await utilities.buildCarDisplay(data[0])
+
+  res.render('./inventory/detail',{
+    title: data[0].inv_make + ' ' + data[0].inv_model,
     nav,
-    grid,
+    carData,
   })
 }
 
 
-module.exports = invCont
+module.exports = invCont;
