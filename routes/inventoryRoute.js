@@ -7,11 +7,11 @@ const inventoryValidate = require('../utilities/inventory-validation')
 
 
 // Route to build inventory by classification view
-router.get("/")
+router.get("/", utilities.handleErrors(invController.buildAdminView)); 
 router.get("/type/:classificationId", invController.buildByClassificationId);
-router.get("/detail/:inv_id", invController.buildByInvId)
-router.get("/",utilities.handleErrors(invController.buildAdminView))
-router.get("/addClassification", utilities.handleErrors(invController.buildAddClassification))
+router.get("/detail/:inv_id", invController.buildByInvId);
+router.get("/addClassification", utilities.handleErrors(invController.buildAddClassification));
+
 
 router.post("/addClassification",
 inventoryValidate.classificationRules(),
