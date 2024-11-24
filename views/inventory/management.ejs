@@ -1,0 +1,27 @@
+<div class="menuBackground">
+    
+</div>
+<h1 class="mainHeading"><%= title %></h1>
+
+ <!-- Flash Message -->
+ <%-messages() %>
+
+<a href="/inv/addClassification" class="management-btn">Add A New Classification</a>
+
+<a href="/inv/addInventory" class="management-btn">Add A New Vehicle</a>
+
+<div class="manageInventory">
+    <h2>Manage Inventory</h2>
+    <p>Choose a Classification to see those Inventory items.</p>
+
+    <%- select %> 
+
+    <table id="inventoryDisplay"></table>
+
+    <noscript> JavaScrip Must be enabled to sue this page </noscript>
+
+    <br>
+    <br>
+    <br>
+    <script src="../../public/js/inventory.js"></script>
+</div>

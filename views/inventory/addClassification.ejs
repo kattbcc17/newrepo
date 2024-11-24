@@ -1,0 +1,26 @@
+
+<div class="menuBackground">
+    
+</div>
+<h1 class="mainHeading"><%= title %></h1>
+<form id="addClassification" action="/inv/addClassification" method="post">
+    <label for="inventory_classification_id">Classification Name</label>
+    <br>
+    <br>
+    <p>The name must be at least 3 characters</p>
+    <input type="text" id="inventory_classification_id" name="inventory_classification_id" pattern=".{3,}" required value="<%= locals.inventory_classification_id %>">
+    <br>
+    <input type="submit" id="btn-addClassification">
+    <% if (locals.errors) { %>
+        <ul class="notice">
+       <% errors.array().forEach(error => { %>
+         <li><%= error.msg %></li>
+      <%  }) %>
+       </ul>
+      <% } %>
+</form>
+<br>
+<br>
+<br>
+<br>
+<br>

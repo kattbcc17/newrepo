@@ -86,7 +86,21 @@ Util.buildCarDisplay  = async function(data) {
   return display
 }
 
-
+Util.buildClassificationList = async function (classification_id) {
+  let data = await invModel.getClassifications();
+ 
+  let classificationList = `
+    <select name="classification_id" id="classificationList">
+      <option>Choose a Classification</option>
+      ${data.rows.map(row => `
+        <option value="${row.classification_id}" ${classification_id !== null && row.classification_id === classification_id ? "selected" : ""}>
+          ${row.classification_name}
+        </option>
+      `).join('')}
+    </select>
+  `;
+  return classificationList;
+}
 
 
 module.exports = Util
