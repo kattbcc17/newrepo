@@ -1,0 +1,173 @@
+<div class="menuBackground"></div>
+<h1 class="mainHeading"><%= title %></h1>
+<form id="addInventory" action="/inv/update" method="post">
+    <!-- Your other form fields -->
+    <% if (locals.errors) { %>
+        <ul class="notice">
+       <% errors.array().forEach(error => { %>
+         <li><%= error.msg %></li>
+      <%  }) %>
+       </ul>
+      <% } %>
+
+    <br> 
+    <br>  
+    <%- select %>  
+
+    <label for="inv_make">Make</label>
+    <input type="text" id="inv_make" name="inv_make" required value="<%=inv_make%>">
+
+    <label for="inv_model"> Model </label>
+    <input type="text" id="inv_model" name="inv_model" required value="<%= inv_model%>" >
+
+    <label for="inv_description">Description</label>
+    <textarea id="inv_description" cols="30" rows="10" name="inv_description"> <%= locals.inv_description%></textarea>
+
+    <label for="inv_image">Image Path</label>
+    <input type="text" id="inv_image" name="inv_image" required value="<%= locals.inv_image%>" >
+
+    <label for="inv_thumbnail">Image Thumbnail</label>
+    <input type="text" id="inv_thumbnail" name="inv_thumbnail" required value="<%= locals.inv_thumbnail%>" >
+
+    <label for="inv_price">Price</label>
+    <input type="number" id="inv_price" name="inv_price" required value="<%= locals.inv_price%>" >
+
+    <label for="inv_year">Year</label>
+    <input type="number" id="inv_year" name="inv_year" required value="<%= locals.inv_year%>" >
+
+    <label for="inv_miles">Miles</label>
+    <input type="text" id="inv_miles" name="inv_miles" title="Please enter a valid number." required value="<%= locals.inv_miles%>" >
+
+    <label for="inv_color">Color</label>
+    <input type="text" id="inv_color" name="inv_color" required value="<%= locals.inv_color%>" >
+
+    <button type="submit" id="btn-addinvenotry">Update Inventory</button>
+    <input type="hidden" name="inv_id"
+        <% if(locals.inv_id) { %> value="<%= locals.inv_id %>"
+        <% } %>>
+</form>
+<br>
+<br>
+<br>
+<br>
+<br>
+<script>
+    // Get the inv_make, inv_model, inv_description, inv_image, inv_thumbnail, inv_price, inv_year, inv_miles, and inv_color input elements
+    var invMakeInput = document.getElementById('inv_make');
+    var invModelInput = document.getElementById('inv_model');
+    var invDescriptionInput = document.getElementById('inv_description');
+    var invImageInput = document.getElementById('inv_image');
+    var invThumbnailInput = document.getElementById('inv_thumbnail');
+    var invPriceInput = document.getElementById('inv_price');
+    var invYearInput = document.getElementById('inv_year');
+    var invMilesInput = document.getElementById('inv_miles');
+    var invColorInput = document.getElementById('inv_color');
+
+    // Add event listeners to the inputs to trigger the style change
+    invMakeInput.addEventListener('input', function () {
+        changeInputStyle(this);
+    });
+
+    invModelInput.addEventListener('input', function () {
+        changeInputStyle(this);
+    });
+
+    invDescriptionInput.addEventListener('input', function () {
+        changeInputStyle(this, 10);
+    });
+
+    invImageInput.addEventListener('input', function () {
+        changeFileExtensionStyle(this, ['.jpg', '.jpeg', '.png', '.webp']);
+    });
+
+    invThumbnailInput.addEventListener('input', function () {
+        changeFileExtensionStyle(this, ['.jpg', '.jpeg', '.png', '.webp']);
+    });
+
+    invPriceInput.addEventListener('input', function () {
+        changePriceStyle(this);
+    });
+
+    invYearInput.addEventListener('input', function () {
+        changeYearStyle(this);
+    });
+
+    invMilesInput.addEventListener('input', function () {
+        changeMilesStyle(this);
+    });
+
+    invColorInput.addEventListener('input', function () {
+        changeColorStyle(this);
+    });
+
+    // Function to change the background color based on input length
+    function changeInputStyle(inputElement, minLength = 3) {
+        var inputValueLength = inputElement.value.length;
+
+        if (inputValueLength < minLength) {
+            inputElement.style.backgroundColor = '#FFCECE';
+        } else {
+            inputElement.style.backgroundColor = '#A7DEFF';
+        }
+    }
+
+    // Function to change the background color based on file extensions
+    function changeFileExtensionStyle(inputElement, allowedExtensions) {
+        var inputValue = inputElement.value.toLowerCase();
+        var isValidExtension = allowedExtensions.some(function (extension) {
+            return inputValue.endsWith(extension);
+        });
+
+        if (isValidExtension) {
+            inputElement.style.backgroundColor = '#A7DEFF';
+        } else {
+            inputElement.style.backgroundColor = '#FFCECE';
+        }
+    }
+
+    // Function to change the background color based on price value
+    function changePriceStyle(inputElement) {
+        var inputValue = parseFloat(inputElement.value);
+
+        if (isNaN(inputValue) || inputValue < 0) {
+            inputElement.style.backgroundColor = '#FFCECE';
+        } else {
+            inputElement.style.backgroundColor = '#A7DEFF';
+        }
+    }
+
+    // Function to change the background color based on year value
+    function changeYearStyle(inputElement) {
+        var inputValue = inputElement.value;
+
+        if (/^\d{4}$/.test(inputValue)) {
+            inputElement.style.backgroundColor = '#A7DEFF';
+        } else {
+            inputElement.style.backgroundColor = '#FFCECE';
+        }
+    }
+
+    // Function to change the background color based on miles value
+    function changeMilesStyle(inputElement) {
+        var inputValue = inputElement.value;
+
+        if (isNaN(inputValue)) {
+            inputElement.style.backgroundColor = '#FFCECE';
+        } else {
+            inputElement.style.backgroundColor = '#A7DEFF';
+        }
+    }
+
+    // Function to change the background color based on color value
+    function changeColorStyle(inputElement) {
+        var inputValue = inputElement.value.trim();
+
+        if (inputValue.length > 0) {
+            inputElement.style.backgroundColor = '#A7DEFF';
+        } else {
+            inputElement.style.backgroundColor = '#FFCECE';
+        }
+    }
+ 
+</script>
+
