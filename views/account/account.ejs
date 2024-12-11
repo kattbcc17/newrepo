@@ -1,0 +1,27 @@
+<div class="menuBackground">
+    
+</div>
+
+<div class="account-container">
+    <h1 class="login-mainHeading">Account Management</h1>
+    <h2>Welcome <%= locals.accountData.account_firstname %></h2>
+    <%-messages() %>
+    <p class="">You're logged in.</p>
+
+    <a href="/account/update">Edit account information</a>
+
+    <% if(locals.accountData.account_type === 'Admin' || locals.accountData.account_type === 'Employee' ) { %> 
+
+    <h2>Inventory Management</h2>
+    <a href="/inv">Manage Inventory</a>
+
+    <% } else { %>
+     <br>   
+    <% } %>   
+</div>
+<br>
+<br>
+<br>
+<script>
+
+</script>
