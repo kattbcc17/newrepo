@@ -1,0 +1,78 @@
+<div class="menuBackground"></div>
+<h1 class="login-mainHeading"><%= title %></h1>
+<% if (errors) { %>
+  <ul class="notice">
+    <% errors.array().forEach(error => { %>
+    <li><%= error.msg %></li>
+    <% }) %>
+  </ul>
+  <% } %>
+<div id="form-container">
+  <form id="login-form" action="/account/updateAccount" method="post">
+    <div class="container">
+      <label for="account_firstname">Name</label>
+      <input
+        type="text"
+        name="account_firstname"
+        id="account_firstname"
+        required
+        value="<%= locals.accountData.account_firstname %>"
+      />
+
+      <label for="account_lastname">Last Name</label>
+      <input
+        id="account_lastname"
+        type="text"
+        placeholder="Enter Username"
+        name="account_lastname"
+        required
+        value="<%= locals.accountData.account_lastname %>"
+      />
+
+      <label for="account_email">email</label>
+      <input
+        id="account_email"
+        type="email"
+        placeholder="Enter a valid email address"
+        name="account_email"
+        required
+        value="<%= locals.accountData.account_email %>"
+      />
+      <button type="submit"><b>The manager</b></button>
+    </div>
+  </form>
+
+  
+  <!-- password form -->
+ 
+  <form id="password-form" action="/account/updatePassword" method="post">
+    <h3>Change your password</h3>
+    <br>
+    <label for="account_password">Password</label>
+      <input
+        id="account_password"
+        type="password"
+        placeholder="Enter Password"
+        name="account_password"
+        required
+        pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{12,}$"
+      />
+      <p class="password-rules">
+        Passwords must be at least 12 characters and contain at least 1 number,
+        1 capital letter and 1 special character
+      </p>
+      <button type="submit"><b>Change Password</b></button>
+  </form>
+</div>
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
