@@ -48,4 +48,6 @@ regValidate.checkUpdatePassword,
 utilities.handleErrors(accountController.updatePassword))
 
 
+
+
 module.exports = router;

@@ -1,12 +1,11 @@
-const utilities = require('../utilities');
+const utilities = require('../utilities/');
 const accountModel = require('../models/account-model');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 require('dotenv').config();
 
-
 /* ****************************************
- *  Deliver login view.
+ *  Deliver login view
  * *************************************** */
 async function buildLogin(req, res, next) {
   let nav = await utilities.getNav();
@@ -187,14 +186,17 @@ async function updateAccount (req, res, next) {
       `The profile was updates successfully.`
     );
 
-    //Update the token
+    //Update teh token
     const accessToken = jwt.sign(
       accountData,
       process.env.ACCESS_TOKEN_SECRET,
       { expiresIn: 3600 * 1000 }
     );
     res.cookie('jwt', accessToken, { httpOnly: true, maxAge: 3600 * 1000 });
-    
+    // res.status(201).render('account/account', {
+    //   title: 'Account Management',
+    //   nav,
+    // });
   
     res.status(201).redirect('/account/')
   }
@@ -227,4 +229,4 @@ async function updatePassword (req, res, next) {
 
 }
 
-module.exports = { buildLogin, buildRegister, registerAccount, accountLogin, buildAccount, logout, buildUpdate, updateAccount, updatePassword };
+module.exports = { buildLogin, buildRegister, registerAccount, accountLogin, buildAccount, logout ,buildUpdate, updateAccount, updatePassword};

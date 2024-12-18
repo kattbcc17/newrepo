@@ -1,0 +1,286 @@
+@media screen and (min-width: 800px) {
+
+    .siteName a{
+      font-size: 25px;
+    }
+
+    .toggle-container{
+        display: none;
+    }
+
+    .toggle{
+        display: none;
+    }
+
+    .account-icon{
+      font-size: 40px;
+    }
+
+    nav{
+        display: block;
+        
+      }
+    
+    header{
+        flex-direction: row-reverse;
+        backdrop-filter: none;
+    }
+
+      nav .menu{ 
+        position: relative;
+        display: flex;
+        justify-content: space-around;
+        background-color: transparent;
+        top: 0;
+        margin-left: -2.5rem;
+      }
+
+  
+      nav ul li{
+        padding: 5px 25px;
+      }
+      
+      nav ul li a{
+        letter-spacing: 1px;
+        font-size: 22px;
+        font-weight: 300;
+      }
+
+      nav ul li a:hover {
+        text-decoration: underline;
+        border-radius: 10px;
+      }
+
+      
+   
+      /* fix the position of the sedan option  */
+    
+
+      /* change the order of the items in the header   */
+      header :nth-child(1){
+        order: 3;
+      }
+      header :nth-child(2){
+        order: 1;
+      }
+      header :nth-child(3){
+        order: 2;
+      }
+
+      .hero-container{
+        justify-content:flex-start;
+        height: 850px;
+        background-position: center;
+        background-size: cover;
+      }
+
+      .content{
+        position: relative;
+        margin-top: 4rem;
+        margin-bottom: 20px;
+      }
+
+      .content h1{
+        font-size: 35px;
+      }
+
+
+      .overlay{
+        background: rgb(0,0,0);
+        background: -moz-linear-gradient(180deg, rgba(0,0,0,1) 19%, rgba(0,0,0,0) 100%);
+        background: -webkit-linear-gradient(180deg, rgba(0,0,0,1) 19%, rgba(0,0,0,0) 100%);
+        background: linear-gradient(180deg, rgba(0,0,0,1) 19%, rgba(0,0,0,0) 100%);
+        filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#000000",endColorstr="#000000",GradientType=1);
+      }
+
+       .hero-button{
+        width: 10%;
+      }
+
+      .audi-performace{
+        display: inline;
+        width: 50%;
+      }
+      
+      .side-by-side{
+        display: flex;
+        margin-top: 3rem;
+      }
+
+      .side-by-side section{
+        width: 100%;
+      }
+
+      .side-by-side h2{
+        margin-bottom: 30px;
+        font-size: 2.3rem;
+        text-align: center;
+      }
+
+      .specifications-section{
+        padding: 0;
+      }
+
+      .audi-performace li{
+        font-size: 20px;
+        line-height: 3rem;
+      }
+
+      .audi-performace ul{
+        margin-left: 60px;
+      }
+
+      .upgradres-container{
+        padding: 0;
+        position: relative;
+      }
+
+      .upgradres{
+        width: 100%;
+        position: absolute;
+        top: 30%
+      }
+
+      .upgradres div{
+        margin-bottom: 30%;
+      }
+
+      .upgradres .icon{
+        font-size: 100px;;
+      }
+
+      .upgradres .icon:hover{
+        background-color: brown;
+        color: white;
+        padding: 30px;
+        border-radius: 100%;
+        transition-duration: 0.5s;
+      }
+
+      footer{
+        margin-top: -5px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        z-index: 3;
+      }
+
+      /* Classification ID Page */
+
+      .mainHeading{
+        margin-top: 50px;
+        font-size: 4rem;
+        margin-bottom: 5rem;
+      }
+
+      #inv-display{
+        display: flex;
+        flex-wrap: wrap;
+      }
+
+      #inv-display li{
+        width: 23.5%;
+        margin-right: 20px;
+      }
+      
+
+      /*Single Car Page*/
+
+      .carBlock{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        
+       }
+       
+       .carPicture{
+        width: 100%;
+       }
+
+
+      .price{
+        font-size: 30px;
+        font-weight: 400;
+        padding: 0px var(--padding);
+        background-color: #c03333;
+        color: white;
+        padding: 10px 20px;
+        
+      }
+
+
+      .color{
+        padding:20px;
+      }
+
+      .description{
+        padding: 20px 30px;
+        font-size: 20px;
+        line-height: 40px;
+      }
+
+      #login-form, #password-form{
+        margin-right: 20px;
+        width: 30%;
+        box-shadow: 1px 3px 19px -4px rgba(0,0,0,0.43);
+        -webkit-box-shadow: 1px 3px 19px -4px rgba(0,0,0,0.43);
+        -moz-box-shadow: 1px 3px 19px -4px rgba(0,0,0,0.43);
+      }
+
+      #login-form button, #password-form button{
+        width: 60%;
+        display: block;
+        margin: 30px auto;
+        border-radius: 10px;
+      }
+
+      .login-mainHeading{
+        font-size: 4rem;  
+      }
+
+       /* ADD ClASSIFICATION  */
+      #addClassification{
+        width: 40%;
+        margin: 0px auto;
+        display: block;
+        background-color: rgb(235, 235, 235);
+        padding: 20px 30px;
+        box-shadow: 1px 3px 19px -4px rgba(0,0,0,0.43);
+        -webkit-box-shadow: 1px 3px 19px -4px rgba(0,0,0,0.43);
+        -moz-box-shadow: 1px 3px 19px -4px rgba(0,0,0,0.43);
+      }
+
+      #addInventory{
+        margin: 0px auto;
+        width: 60%;
+        padding: 20px 30px;
+        background-color: rgb(235, 235, 235);
+        box-shadow: 1px 3px 19px -4px rgba(0,0,0,0.43);
+        -webkit-box-shadow: 1px 3px 19px -4px rgba(0,0,0,0.43);
+        -moz-box-shadow: 1px 3px 19px -4px rgba(0,0,0,0.43);
+      }
+      
+        /* Account  */
+      .account-container{
+        width: 50%;
+      }
+
+      /* update user info */
+      #form-container{
+        display: flex;
+        justify-content: center;
+        flex-direction: row;
+       }
+
+       /* fixes  */
+       .userLogged a{
+        color: white;
+        font-size: 20px; 
+      }
+
+      .management-btn{
+        width: 20%;
+      }
+
+  }

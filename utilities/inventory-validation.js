@@ -53,6 +53,33 @@ validate.classificationRules = () => {
         .trim()
         .isLength({ min: 10 })
         .withMessage("Description must be at least 10 characters."),
+
+        // body("inv_image")
+        // .trim()
+        // .isLength({ min: 10 })
+        // .withMessage("Image path must be provided.")
+        // .custom((value, { req }) => {
+        //   // Check if the image path ends with the specified extensions
+        //   const validExtensions = [".jpg", ".jpeg", ".png", ".webp"];
+        //   if (!validExtensions.some(ext => value.toLowerCase().endsWith(ext))) {
+        //     throw new Error("Invalid image file format.");
+        //   }
+        //   return true;
+        // }),
+
+        // body("inv_thumbnail")
+        // .trim()
+        // .isLength({ min: 10 })
+        // .withMessage("Image path must be provided.")
+        // .custom((value, { req }) => {
+        //   // Check if the image path ends with the specified extensions
+        //   const validExtensions = [".jpg", ".jpeg", ".png", ".webp"];
+        //   if (!validExtensions.some(ext => value.toLowerCase().endsWith(ext))) {
+        //     throw new Error("Invalid image file format.");
+        //   }
+        //   return true;
+        // }),
+
         body("inv_price")
         .trim()
         .isNumeric()
@@ -79,18 +106,51 @@ validate.classificationRules = () => {
 /* ******************************
  * Check data and return errors or continue to registration
  * ***************************** */
-validate.checkInventoryData = async (req, res, next) => {
-  const {classification_id, inv_make, inv_model,  inv_description, inv_image, inv_thumbnail, inv_price, inv_year, inv_miles, inv_color} = req.body
+  validate.checkInventoryData = async (req, res, next) => {
+    const {classification_id, inv_make, inv_model,  inv_description, inv_image, inv_thumbnail, inv_price, inv_year, inv_miles, inv_color} = req.body
+    let errors = []
+    errors = validationResult(req)
+    if (!errors.isEmpty()) {
+      let nav = await utilities.getNav()
+      let select = await utilities.buildClassificationList(classification_id)
+      res.render("inventory/addInventory", {
+        errors,
+        title: "Add New Car",
+        nav,
+        select,
+        classification_id,
+        inv_make,
+        inv_model,
+        inv_description,
+        inv_image,
+        inv_thumbnail,
+        inv_price,
+        inv_year,
+        inv_miles,
+        inv_color,
+      })
+      return
+    }
+    next()
+  }
+
+
+/* ******************************
+ * Check data and return errors to edit view or continue to update car
+ * ***************************** */
+validate.checkUpdateData = async (req, res, next) => {
+  const {inv_id, classification_id, inv_make, inv_model,  inv_description, inv_image, inv_thumbnail, inv_price, inv_year, inv_miles, inv_color} = req.body
   let errors = []
   errors = validationResult(req)
   if (!errors.isEmpty()) {
     let nav = await utilities.getNav()
-    let select = await utilities.buildClassificationList(classification_id)
-    res.render("inventory/addInventory", {
+    let classification = parseInt(classification_id)
+    let dropDown = await utilities.buildClassificationList(classification)
+    res.render("inventory/editInventory", {
       errors,
-      title: "Add New Car",
+      title: "Edit" + inv_make + " " + inv_model,
       nav,
-      select,
+      select:dropDown,
       classification_id,
       inv_make,
       inv_model,
@@ -101,44 +161,14 @@ validate.checkInventoryData = async (req, res, next) => {
       inv_year,
       inv_miles,
       inv_color,
+      inv_id,
     })
     return
   }
   next()
 }
-
-
-/* ******************************
-* Check data and return errors to edit view or continue to update car
-* ***************************** */
-validate.checkUpdateData = async (req, res, next) => {
-const {inv_id, classification_id, inv_make, inv_model,  inv_description, inv_image, inv_thumbnail, inv_price, inv_year, inv_miles, inv_color} = req.body
-let errors = []
-errors = validationResult(req)
-if (!errors.isEmpty()) {
-  let nav = await utilities.getNav()
-  let classification = parseInt(classification_id)
-  let dropDown = await utilities.buildClassificationList(classification)
-  res.render("inventory/editInventory", {
-    errors,
-    title: "Edit" + inv_make + " " + inv_model,
-    nav,
-    select:dropDown,
-    classification_id,
-    inv_make,
-    inv_model,
-    inv_description,
-    inv_image,
-    inv_thumbnail,
-    inv_price,
-    inv_year,
-    inv_miles,
-    inv_color,
-    inv_id,
-  })
-  return
-}
-next()
-}
-
 module.exports = validate
+
+
+
+

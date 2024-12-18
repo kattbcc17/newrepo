@@ -111,7 +111,7 @@ validate.updateAccountRules = () => {
   ]
 }
 
-/* ******************************
+  /* ******************************
  * Check data and return errors or continue to registration
  * ***************************** */
   validate.checkUpdateData = async (req, res, next) => {

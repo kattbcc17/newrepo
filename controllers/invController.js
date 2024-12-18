@@ -7,6 +7,7 @@ const invCont = {}
  *  Build inventory by classification view
  * ************************** */
 invCont.buildByClassificationId = async function (req, res, next) {
+  const myCookie = req.cookies.sessionId;
   const classification_id = req.params.classificationId
   const data = await invModel.getInventoryByClassificationId(classification_id)
   const grid = await utilities.buildClassificationGrid(data)
@@ -25,7 +26,7 @@ invCont.buildByInvId = async function(req, res, next) {
   let nav = await utilities.getNav()
   const carData = await utilities.buildCarDisplay(data[0])
 
-  res.render('./inventory/detail',{
+  res.render('./inventory/carSingleView',{
     title: data[0].inv_make + ' ' + data[0].inv_model,
     nav,
     carData,

@@ -88,9 +88,14 @@ Util.buildCarDisplay  = async function(data) {
   return display
 }
 
-Util.buildClassificationList = async function (classification_id) {
+Util. buildClassificationList = async function(classification_id) {
   let data = await invModel.getClassifications();
- 
+  // let className =''
+  // for(item of data.rows){
+  //   if(item.classification_id === classification_id){
+  //     className = item.classification_name
+  //   }
+  // }
   let classificationList = `
     <select name="classification_id" id="classificationList">
       <option>Choose a Classification</option>
@@ -102,6 +107,22 @@ Util.buildClassificationList = async function (classification_id) {
     </select>
   `;
   return classificationList;
+  
+  // let data = await invModel.getClassifications();
+  // let classificationList ='<select name="classification_id" id="classificationList">'
+  // classificationList += "<option> Choose a Classification</option>"
+  // data.row.forEach((row)=>{
+  //   classificationList += '<option value="' + row.classification_id + '"'
+  //   if(
+  //     classification_id != null &&
+  //     row.classification_id == classification_id
+  //   ){
+  //     classificationList += "selected"
+  //   }
+  //   classificationList += ">" + row.classification_name + "</option>"
+  // })
+  // classificationList += "</select>"
+  // return classificationList
 }
 
 /* ****************************************

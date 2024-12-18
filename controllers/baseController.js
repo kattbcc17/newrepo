@@ -1,4 +1,4 @@
-const utilities = require("../utilities")
+const utilities = require("../utilities/")
 const jwt = require('jsonwebtoken');
 const baseController = {}
 
